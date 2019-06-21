@@ -1,8 +1,11 @@
 ﻿import React, { Component } from 'react';
 import { storeProducts } from './data.js'
-import { Card, Icon, Img, Button, Grid } from 'semantic-ui-react'
+import {  Grid } from 'semantic-ui-react'
 import { Link } from 'react-router-dom' 
 import './ProductsList.css'
+import { ProductConsumer } from './contextApi';
+import { Product} from './Product.js'
+
 export class ProductList extends Component {
     state = {
         productsList: storeProducts
@@ -19,27 +22,37 @@ export class ProductList extends Component {
         return (
 
             
-              <div>
-            
-                <h1>Our Products</h1>
-               
-                {this.state.productsList.map((product) =>
-                    <Grid.Row columns={3}>
-                        <Grid.Column key={product.id}>
-                            <img src={product.img} />
-                            <Link to={{
-                                pathname: "/detailList",
-                                data: { product }
-                            }}>{product.title}</Link>
-                           
-                            
-                    </Grid.Column>
-                    
-                </Grid.Row>
+            <div className="py-5">
+                <div className="container">
+                    <h1>Our Products</h1>
+                    <div className="row">
+                        <ProductConsumer>
+                            {value => {
+                                return value.productLists.map((product) =>
 
-                )
-                }
+
+                                    <Product key={product.id} product={product}
+                                        img={product.img}
+                                        id={product.id}
+                                        price={product.price}
+                                        inCart={product.inCart}
+                                        title={product.title}
+
+                                    />
+                                    
+                                    )
+
+                            }}
+
+                        </ProductConsumer>  
+                    </div>
+
+                </div>
+            
+              
                
+               
+
               
            
 

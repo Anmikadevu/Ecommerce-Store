@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import { NavMenu } from './NavMenu';
 
 export class Cart extends Component {
     displayName = Cart.name
@@ -18,13 +19,14 @@ export class Cart extends Component {
     render() {
         return (
             <div>
+                <NavMenu/>
                 <h1>Counter</h1>
 
                 <p>This is a simple example of a React component.</p>
 
                 <p>Current count: <strong>{this.state.currentCount}</strong></p>
 
-                <button onClick={()=>this.incrementCounter(e)}>Increment</button>
+                <button onClick={this.incrementCounter}>Increment</button>
             </div>
         );
     }

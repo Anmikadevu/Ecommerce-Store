@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
+import {  Grid, Row } from 'react-bootstrap';
 import { NavMenu } from './NavMenu';
 
 export class Layout extends Component {
@@ -9,8 +9,8 @@ export class Layout extends Component {
     return (
       <Grid fluid>
         <Row>
-         
-            <NavMenu />
+
+                <NavMenu/>
           
             {this.props.children}
        

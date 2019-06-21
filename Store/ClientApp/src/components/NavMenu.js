@@ -1,16 +1,16 @@
 ﻿import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 
+import { Link } from 'react-router-dom'
 import './NavMenu.css';
 //import { faHome } from "@fortawesome/free-solid-svg-icons";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'font-awesome/css/font-awesome.min.css';
-import { Cart } from './Cart';
+
 
 export class NavMenu extends Component {
     state = {
 
-        currentCount:0
+      
     }
   displayName = NavMenu.name
     handleClick = () => {
@@ -20,11 +20,7 @@ export class NavMenu extends Component {
 
 
     }
-    incrementCounter = () => {
-        this.setState({
-            currentCount: this.state.currentCount + 1
-        });
-    }
+   
   render() {
     return (
         <nav className="navbar navbar-default" role="navigation">
@@ -38,16 +34,19 @@ export class NavMenu extends Component {
             
             <div className="navbar-collapse collapse">
                 <ul className="nav navbar-nav navbar-left">
-                    <i className="fa fa-shopping-basket fa-2x" />
+                    <Link to="/" ><i className="fa fa-shopping-basket fa-2x" /></Link>
                     <li><a href="#about">Products</a></li>
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
-                    <li><i className="fa fa-shopping-cart fa-2x"
+                    <li><Link to="/cart">
+
+                        <button><i className="fa fa-shopping-cart fa-2x" />my cart
+                        </button>
                         
-                    />
-                        <strong>{this.state.currentCount}</strong>   
+                    </Link>
+                          
                     </li>
-                    <li><a href="cart">My cart</a></li>
+                   
                 </ul>
                 
             </div>
@@ -56,3 +55,9 @@ export class NavMenu extends Component {
     );
   }
 }
+
+//const ButtonContainer = styled.button`
+
+//text-transorm: capitalize;
+
+//`
